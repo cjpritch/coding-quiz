@@ -1,1 +1,1 @@
-# coding-quiz
+# Javascript Coding Quiz
