@@ -4,7 +4,7 @@
 
 - [Description](#description)
 - [Installation](#installation)
-- [Technologies](#technologie)
+- [Technologies](#technologies)
 - [Website](#website)
 
 <h2>Description</h2>
