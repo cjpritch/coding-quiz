@@ -1,4 +1,3 @@
-var totalTime = 75;
 var correctAns = 0;
 var questionNum = 0;
 var scoreResult;
@@ -111,7 +110,7 @@ function newQuiz() {
 function showQuiz() {
     nextQuestion();
 }
-
+// displays options for questions 
 function nextQuestion() {
     question.textContent = questions[questionIndex].question;
     choiceA.textContent = questions[questionIndex].choices[0];
@@ -140,21 +139,13 @@ function checkAnswer(answer) {
         gameOver();
     }
 }
-function gameOver() {
-    summary.style.display = "block";
-    questionDiv.style.display = "none";
-    startDiv.style.display = "none";
-    timer.style.display = "none";
-    timesUp.style.display = "block";
-
-    finalScore.textContent = correctAns;
-}
 
 function chooseA() { checkAnswer(0); }
 function chooseB() { checkAnswer(1); }
 function chooseC() { checkAnswer(2); }
 function chooseD() { checkAnswer(3); }
 
+// displays a summmary when the game ends
 function gameOver() {
     summary.style.display = "block";
     questionDiv.style.display = "none";
@@ -162,15 +153,13 @@ function gameOver() {
     timer.style.display = "none";
     timesUp.style.display = "block";
 
-    // show final score
     finalScore.textContent = correctAns;
 }
 
-// enter initial and store highscore in local storage
+// enter initials for scoreboard
 function storeHighScores(event) {
     event.preventDefault();
 
-    // stop function is initial is blank
     if (initialInput.value === "") {
         alert("Please enter your initials!");
         return;
@@ -200,7 +189,6 @@ function storeHighScores(event) {
     console.log(userScore);
     scoresArray.push(userScore);
 
-    // stringify array in order to store in local
     var scoresArrayString = JSON.stringify(scoresArray);
     window.localStorage.setItem("high scores", scoresArrayString);
     
@@ -208,7 +196,7 @@ function storeHighScores(event) {
     showHighScores();
 }
 
-// function to show high scores
+// show high scores
 var i = 0;
 function showHighScores() {
 
@@ -221,7 +209,6 @@ function showHighScores() {
 
     var savedHighScores = localStorage.getItem("high scores");
 
-    // check if there is any in local storage
     if (savedHighScores === null) {
         return;
     }
@@ -235,6 +222,7 @@ function showHighScores() {
         listOfHighScores.appendChild(eachNewHighScore);
     }
 }
+// event listeners 
 submitInitialBtn.addEventListener("click", function(event){ 
     storeHighScores(event);
 });
