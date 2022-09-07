@@ -4,7 +4,7 @@
 
 - [Description](#description)
 - [Installation](#installation)
-- [Technologies Used](#technologiesused)
+- [Technologies](#technologie)
 - [Website](#website)
 
 <h2>Description</h2>
@@ -14,7 +14,7 @@
 <h2>Installation</h2>
 <p>No installation needed, simply visit the webpage!</p>
 
-<h2>Technologies Used</h2>
+<h2>Technologies</h2>
 
 - HTML
 - CSS
