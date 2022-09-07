@@ -31,54 +31,104 @@ var listOfHighScores = document.getElementById("listOfHighScores");
 // questions the quiz will pull from
 const questions = [
     {
-        question: "TEST QUESTION 1?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "What is the correct way to write a comment in JavaScript?",
+        choices: [
+            "A. {#...#}", 
+            "B. <!---....---!>", 
+            "C. //...", 
+            "D. \\..."
+        ],
+        answer: "C. //..."
     },
     {
-        question: "TEST QUESTION 2?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "Inside which HTML element do we put the JavaScript?",
+        choices: [
+            "A. <js>", 
+            "B. <scripting>", 
+            "C. <javascript>", 
+            "D. <script>"
+        ],
+        answer: "D. <script>"
     },
     {
-        question: "TEST QUESTION 3?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "How do you write 'Hello World' in an alert box?",
+        choices: [
+            "A. msg('Hello World')",
+            "B. alert('Hello World')", 
+            "C. alertBox('Hello World')", 
+            "D. msgBox('Hello World')"
+        ],
+        answer: "B. alert('Hello World')"
     },
     {
-        question: "TEST QUESTION 4?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "How do you create a function in JavaScript?",
+        choices: [
+            "A. function = myFunction()", 
+            "B. function:myFunction()", 
+            "C. function myFunction()", 
+            "D. function = myFunction"
+        ],
+        answer: "C. function myFunction()"
     },
     {
-        question: "TEST QUESTION 5?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "How do you call a function named 'myFunction'?",
+        choices: [
+            "A. call myFunction()", 
+            "B. call function myFunction()", 
+            "C. myFunction()", 
+            "D. call function = myFunction()"
+        ],
+        answer: "C. myFunction()"
     },
     {
-        question: "TEST QUESTION 6?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "How do you write an IF statement in JavaScript?",
+        choices: [
+            "A. if i = 5 then", 
+            "B. if i == 5 then", 
+            "C. if i=5", 
+            "D. if (i ==5)"
+        ],
+        answer: "D. if (i ==5)"
     },
     {
-        question: "TEST QUESTION 7?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "How does a WHILE loop start?",
+        choices: [
+            "A. while i = 1 to 10", 
+            "B. while (i <= 10; i++)", 
+            "C. while (i <= 10)", 
+            "D. while i (< 10) "
+        ],
+        answer: "C. while (i <= 10)"
     },
     {
-        question: "TEST QUESTION 8?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "How does a FOR loop start?",
+        choices: [
+            "A. for (i = 0; i <= 5; i++)", 
+            "B for i = 1 to 5", 
+            "C. for (i <= 5; i++)", 
+            "D. for (i=0; i<=5)"
+        ],
+        answer: "A. for (i = 0; i <= 5; i++)"
     },
     {
-        question: "TEST QUESTION 9?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "What is the correct way to write a JavaScript array?",
+        choices: [
+            "A. var colors = (1:'red', 2:'green', 3:'blue'", 
+            "B. var colors = 1. red, 2. green, 3. blue",
+            "C. var colors = ['red', 'green', 'blue']", 
+            "D. var color = 'red', 'green', 'blue'"
+        ],
+        answer: "C. var colors = ['red', 'green', 'blue']"
     },
     {
-        question: "TEST QUESTION 10?",
-        choices: ["A", "B", "C", "D"],
-        answer: "A"
+        question: "Which event occurs when the user clicks on an HTML element?",
+        choices: [
+            "A. onclick", 
+            "B. onmouseclick", 
+            "C. onselect", 
+            "D. onchange"
+        ],
+        answer: "A. onclick"
     },
 ];
 // sets baseline for a new quiz and starts the timer when called 
@@ -118,6 +168,8 @@ function nextQuestion() {
     choiceC.textContent = questions[questionIndex].choices[2];
     choiceD.textContent = questions[questionIndex].choices[3];
 }
+
+
 // checks if the selected answer is correct
 function checkAnswer(answer) {
 
@@ -186,7 +238,6 @@ function storeHighScores(event) {
         score: finalScore.textContent
     };
 
-    console.log(userScore);
     scoresArray.push(userScore);
 
     var scoresArrayString = JSON.stringify(scoresArray);
@@ -195,6 +246,7 @@ function storeHighScores(event) {
     // show current highscores
     showHighScores();
 }
+
 
 // show high scores
 var i = 0;
@@ -212,7 +264,6 @@ function showHighScores() {
     if (savedHighScores === null) {
         return;
     }
-    console.log(savedHighScores);
 
     var storedHighScores = JSON.parse(savedHighScores);
 
@@ -222,6 +273,13 @@ function showHighScores() {
         listOfHighScores.appendChild(eachNewHighScore);
     }
 }
+
+startBtn.addEventListener("click", newQuiz);
+choiceA.addEventListener("click", chooseA);
+choiceB.addEventListener("click", chooseB);
+choiceC.addEventListener("click", chooseC);
+choiceD.addEventListener("click", chooseD);
+
 // event listeners 
 submitInitialBtn.addEventListener("click", function(event){ 
     storeHighScores(event);
@@ -241,8 +299,4 @@ clearHighScoreBtn.addEventListener("click", function(){
     listOfHighScores.innerHTML = "High Scores Cleared!";
 });
 
-startBtn.addEventListener("click", newQuiz);
-choiceA.addEventListener("click", chooseA);
-choiceB.addEventListener("click", chooseB);
-choiceC.addEventListener("click", chooseC);
-choiceD.addEventListener("click", chooseD);
+
